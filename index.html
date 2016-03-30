@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pokemons">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kottans</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="app/index.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
+  <script src="app/index.module.js"></script>
+  <script src="app/index.service.js"></script>
+  <script src="app/index.route.js"></script>
+  <script src="app/index.controller.js"></script>
+  <script src="app/components/pokemonCtrl.js"></script>
+</head>
+<body ng-controller="pokemonsCtrl">
+  <h1>Pokedex</h1>
+  <div class="container-fluid">
+    <select ng-model="typeFilter" ng-options="type.value as type.label for type in types"></select>
+    <div class="row">
+      <div class="col-xs-12 col-sm-8">
+        <div class="row pokemons-list">
+          <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="pokemon in pokemons | filter: {types: {name: typeFilter}}">
+            <a ui-sref="pokemon({name: pokemon.name, id: pokemon.national_id})">
+              <img ng-src="//pokeapi.co/media/img/{{pokemon.national_id}}.png">
+              <strong class="name">{{pokemon.name}}</strong>
+              <span class="type" ng-repeat="type in pokemon.types">{{type.name}}</span>
+            </a>
+          </div>
+        </div>
+        <button type="button" class="btn" ng-click="loadMore(url)">Load More</button>
+      </div>
+      <div ui-view class="col-xs-12 col-sm-4"></div>
+    </div>
+  </div>
+  <div class="loading" ng-show="indicateProgress">
+    <div id="escapingBallG">
+      <div id="escapingBall_1" class="escapingBallG"></div>
+    </div>
+  </div>
+</body>
+</html>

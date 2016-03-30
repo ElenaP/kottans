@@ -1,0 +1,42 @@
+<div class="details">
+  <img ng-src="//pokeapi.co/media/img/{{pokemon.national_id}}.png">
+  <strong class="name" ng-bind="pokemon.name"></strong>
+  <table class="table table-bordered">
+    <tr>
+      <td>Type</td>
+      <td><span ng-repeat="type in pokemon.types">{{type.name}}</span></td>
+    </tr>
+    <tr>
+      <td>Attack</td>
+      <td ng-bind="pokemon.attack"></td>
+    </tr>
+    <tr>
+      <td>Defense</td>
+      <td ng-bind="pokemon.defense"></td>
+    </tr>
+    <tr>
+      <td>HP</td>
+      <td ng-bind="pokemon.hp"></td>
+    </tr>
+    <tr>
+      <td>SP Attack</td>
+      <td ng-bind="pokemon.sp_atk"></td>
+    </tr>
+    <tr>
+      <td>SP Defense</td>
+      <td ng-bind="pokemon.sp_def"></td>
+    </tr>
+    <tr>
+      <td>Speed</td>
+      <td ng-bind="pokemon.speed"></td>
+    </tr>
+    <tr>
+      <td>Weight</td>
+      <td ng-bind="pokemon.weight"></td>
+    </tr>
+    <tr>
+      <td>Total moves</td>
+      <td ng-bind="pokemon.total"></td>
+    </tr>
+  </table>
+</div>
