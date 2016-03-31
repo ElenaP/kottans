@@ -1,5 +1,5 @@
-app.service('serviceHttp', ['$http',
-  function($http) {
+app.service('serviceHttp', ['$http', '$log',
+  function($http, $log) {
     this.get = function(url) {
       return $http({
         method: 'GET',
@@ -7,7 +7,7 @@ app.service('serviceHttp', ['$http',
       }).then(function(response){
         return response.data;
       }, function(response){
-
+        $log.log(response);
       })
     }
 }]);
