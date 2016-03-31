@@ -11,15 +11,14 @@ app.controller('pokemonsCtrl', ['$scope', 'serviceHttp', '$timeout', function($s
     $scope.typeFilter = $scope.types[0].value;
   });
   $scope.loadMore = function(url) {
-    $timeout(function() {
-      $scope.indicateProgress = true;
-    }, 1000);
+    var timer = $timeout(function() {
+      $scope.loading = true;
+    }, 500);
     serviceHttp.get('//pokeapi.co' + url).then(function(data){
-      $scope.pokemons = data.objects;
+      $scope.pokemons = $scope.pokemons.concat(data.objects);
       $scope.url = data.meta.next;
-      if($scope.indicateProgress) {
-        $scope.indicateProgress = false;
-      }
+      $scope.loading = false;
+      $timeout.cancel(timer);
     });
   };
 }]);

@@ -16,7 +16,7 @@
 </head>
 <body ng-controller="pokemonsCtrl">
   <h1>Pokedex</h1>
-  <div class="container-fluid">
+  <div class="container-fluid" ng-hide="indicateProgress">
     <select ng-model="typeFilter" ng-options="type.value as type.label for type in types"></select>
     <div class="row">
       <div class="col-xs-12 col-sm-8">
@@ -29,7 +29,7 @@
             </a>
           </div>
         </div>
-        <button type="button" class="btn" ng-click="loadMore(url)">Load More</button>
+        <button type="button" ng-class="{'disabled': loading}" class="btn" ng-click="loadMore(url)">Load More <div class="overlay-loader" ng-if="loading"><div class="loader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div></button>
       </div>
       <div ui-view class="col-xs-12 col-sm-4"></div>
     </div>

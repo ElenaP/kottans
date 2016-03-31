@@ -1,4 +1,4 @@
-<div class="details">
+<div class="details" ng-if="!loading">
   <img ng-src="//pokeapi.co/media/img/{{pokemon.national_id}}.png">
   <strong class="name" ng-bind="pokemon.name"></strong>
   <table class="table table-bordered">
@@ -40,3 +40,4 @@
     </tr>
   </table>
 </div>
+<div class="overlay-loader details-loading" ng-if="loading"><div class="loader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
